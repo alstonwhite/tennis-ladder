@@ -16,6 +16,7 @@ db.sync();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Placeholder api route
 app.get("/api", (req, res) => {
   res.json({ message: "Server api endpoint" });
 });
