@@ -1,9 +1,6 @@
 const path = require("path");
 const express = require("express");
-const {
-  db,
-  models: { User },
-} = require("./db");
+const { db } = require("./db");
 
 const PORT = process.env.PORT || 8080;
 
@@ -16,10 +13,8 @@ db.sync();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Placeholder api route
-app.get("/api", (req, res) => {
-  res.json({ message: "Server api endpoint" });
-});
+// Route all API calls to /api/index
+app.use("/api", require("./api"))
 
 app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "..", "public/index.html"))
