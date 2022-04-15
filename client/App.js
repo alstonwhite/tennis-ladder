@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import LadderRankings from "./components/LadderRankings";
+import LadderMatches from "./components/LadderMatches";
 
 const App = () => {
-  // const [data, setData] = useState(null);
-  // useEffect(() => {
-  //   fetch("/testApi")
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data));
-  // }, []);
-
   return (
     <div>
       <h1>Hello World</h1>
+      <LadderRankings />
+      <LadderMatches />
     </div>
   );
 };

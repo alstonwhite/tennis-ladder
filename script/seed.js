@@ -11,7 +11,7 @@ const seed = async () => {
   const userAlston = await User.create({
     firstName: "Alston",
     lastName: "White",
-    country: "USA",
+    country: "United States",
     handedness: "right",
   });
   const userNick = await User.create({ firstName: "Nick", lastName: "Izzard" });

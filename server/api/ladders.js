@@ -33,8 +33,6 @@ router.get("/:ladderId", async (req, res, next) => {
 // GET /api/ladders/:ladderId/players
 router.get("/:ladderId/players", async (req, res, next) => {
   try {
-    // const ladder = await Ladder.findByPk(req.params.ladderId)
-    // const ladderPlayers = await ladder.getUsers()
     const ladderPlayers = await Ladder.findByPk(req.params.ladderId, {
       include: { model: User },
     }).then((res) => res.users);
