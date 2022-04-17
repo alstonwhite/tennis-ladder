@@ -43,6 +43,26 @@ router.get("/:ladderId/players", async (req, res, next) => {
   }
 });
 
+// Get all players in single ladder with wins/losses
+// GET /api/ladders/:ladderId/playersWL
+router.get("/:ladderId/playersWL", async (req, res, next) => {
+  try {
+    const ladderPlayersWL = await Ladder.findByPk(req.params.ladderId, {
+      include: {
+        model: User,
+        include: [
+          { as: "wonMatches", model: Match },
+          { as: "lostMatches", model: Match },
+        ],
+      },
+    }).then((res) => res.users);
+    res.json(ladderPlayersWL);
+  } catch (err) {
+    console.log("Error at GET /api/ladders/:ladderId/players ", err);
+    next(err);
+  }
+});
+
 // Get all matches in single ladder
 // GET /api/ladders/:ladderId/matches
 router.get("/:ladderId/matches", async (req, res, next) => {
@@ -50,7 +70,13 @@ router.get("/:ladderId/matches", async (req, res, next) => {
     // const ladder = await Ladder.findByPk(req.params.ladderId)
     // const ladderPlayers = await ladder.getUsers()
     const ladderMatches = await Ladder.findByPk(req.params.ladderId, {
-      include: { model: Match },
+      include: {
+        model: Match,
+        include: [
+          { as: "winner", model: User },
+          { as: "loser", model: User },
+        ],
+      },
     }).then((res) => res.matches);
     res.json(ladderMatches);
   } catch (err) {
@@ -87,12 +113,12 @@ router.put("/:ladderId", async (req, res, next) => {
 // Delete an existing ladder
 // DELETE /api/ladders/:ladderId
 router.delete("/:ladderId", async (req, res, next) => {
-    try {
-      const ladder = await Ladder.findByPk(req.params.ladderId);
-      await ladder.destroy();
-      res.send(ladder);
-    } catch (err) {
-      console.log("Error at DELETE /api/ladders/:ladderId ", err);
-      next(err);
-    }
-  });
+  try {
+    const ladder = await Ladder.findByPk(req.params.ladderId);
+    await ladder.destroy();
+    res.send(ladder);
+  } catch (err) {
+    console.log("Error at DELETE /api/ladders/:ladderId ", err);
+    next(err);
+  }
+});

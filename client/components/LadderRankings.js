@@ -33,10 +33,12 @@ const LadderRankings = () => {
   const ladderId = 1;
   const [playerData, setPlayerData] = useState(null);
   useEffect(() => {
-    fetch(`api/ladders/${ladderId}/players`)
+    fetch(`api/ladders/${ladderId}/playersWL`)
       .then((res) => res.json())
       .then((data) => setPlayerData(data));
   }, []);
+
+  console.log("playerData", playerData);
 
   return (
     <div>
@@ -54,20 +56,26 @@ const LadderRankings = () => {
           </thead>
           <tbody>
             {playerData &&
-              playerData.map((player) => {
-                return (
-                  <tr key={player.id}>
-                    <TableCell>1</TableCell>
-                    <TableCell>+4</TableCell>
-                    <TableCell>
-                      {player.country ? getFlagEmoji(player.country) : "🏴‍☠️"}{" "}
-                      {player.firstName} {player.lastName}
-                    </TableCell>
-                    <TableCell>4</TableCell>
-                    <TableCell>1</TableCell>
-                  </tr>
-                );
-              })}
+              playerData
+                .sort(
+                  (p1, p2) => p1.User_Ladder.ranking - p2.User_Ladder.ranking
+                )
+                .map((player) => {
+                  return (
+                    <tr key={player.id}>
+                      <TableCell>{player.User_Ladder.ranking}</TableCell>
+                      <TableCell>
+                        {player.User_Ladder.prevRanking || "-"}
+                      </TableCell>
+                      <TableCell>
+                        {player.country ? getFlagEmoji(player.country) : "🏴‍☠️"}{" "}
+                        {player.firstName} {player.lastName}
+                      </TableCell>
+                      <TableCell>{player.wonMatches.length}</TableCell>
+                      <TableCell>{player.lostMatches.length}</TableCell>
+                    </tr>
+                  );
+                })}
           </tbody>
         </Table>
       </div>

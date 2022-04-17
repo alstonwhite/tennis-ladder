@@ -10,7 +10,7 @@ let config;
 // For deployment to Heroku
 if (process.env.DATABASE_URL) {
   config = {
-    logging: false,
+    logging: true,
     ssl: true,
     dialectOptions: {
       ssl: {

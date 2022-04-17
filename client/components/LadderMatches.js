@@ -41,7 +41,6 @@ const LadderMatches = () => {
       .then((data) => setMatchesData(data));
   }, []);
 
-  console.log("matchesData", matchesData);
   return (
     <div>
       <Title>Ladder Matches</Title>
@@ -54,14 +53,14 @@ const LadderMatches = () => {
                 <tbody>
                   <tr key={match.winnerId}>
                     <TableCell>[Rank]</TableCell>
-                    <TableCell>[Flag/Name]</TableCell>
+                    <TableCell>{match.winner.firstName} {match.winner.lastName}</TableCell>
                     <TableCell>{match.winnerScoreSet1 || 1}</TableCell>
                     <TableCell>{match.winnerScoreSet2 || 2}</TableCell>
                     <TableCell>{match.winnerScoreSet3 || 3}</TableCell>
                   </tr>
                   <tr key={match.loserId}>
                     <TableCell>[Rank]</TableCell>
-                    <TableCell>[Flag/Name]</TableCell>
+                    <TableCell>{match.loser.firstName} {match.loser.lastName}</TableCell>
                     <TableCell>{match.loserScoreSet3 || 1}</TableCell>
                     <TableCell>{match.loserScoreSet3 || 2}</TableCell>
                     <TableCell>{match.loserScoreSet3 || 3}</TableCell>

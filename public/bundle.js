@@ -844,15 +844,14 @@ var LadderMatches = function LadderMatches() {
       return setMatchesData(data);
     });
   }, []);
-  console.log("matchesData", matchesData);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, null, "Ladder Matches"), matchesData && matchesData.map(function (match) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(MatchCard, {
       key: match.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(MatchCardHeader, null, "[Date] - [Location]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(MatchCardScoreTable, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
       key: match.winnerId
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, "[Rank]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, "[Flag/Name]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.winnerScoreSet1 || 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.winnerScoreSet2 || 2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.winnerScoreSet3 || 3)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, "[Rank]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.winner.firstName, " ", match.winner.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.winnerScoreSet1 || 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.winnerScoreSet2 || 2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.winnerScoreSet3 || 3)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
       key: match.loserId
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, "[Rank]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, "[Flag/Name]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.loserScoreSet3 || 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.loserScoreSet3 || 2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.loserScoreSet3 || 3)))));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, "[Rank]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.loser.firstName, " ", match.loser.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.loserScoreSet3 || 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.loserScoreSet3 || 2), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, match.loserScoreSet3 || 3)))));
   }));
 };
 
@@ -917,16 +916,19 @@ var LadderRankings = function LadderRankings() {
       setPlayerData = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetch("api/ladders/".concat(ladderId, "/players")).then(function (res) {
+    fetch("api/ladders/".concat(ladderId, "/playersWL")).then(function (res) {
       return res.json();
     }).then(function (data) {
       return setPlayerData(data);
     });
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, null, "Ladder Rankings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Table, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "Rank"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "+/-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "W"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "L"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, playerData && playerData.map(function (player) {
+  console.log("playerData", playerData);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, null, "Ladder Rankings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Table, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "Rank"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "+/-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "W"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "L"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, playerData && playerData.sort(function (p1, p2) {
+    return p1.User_Ladder.ranking - p2.User_Ladder.ranking;
+  }).map(function (player) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
       key: player.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, "+4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, player.country ? (0,_utils_countriesUtils__WEBPACK_IMPORTED_MODULE_1__.getFlagEmoji)(player.country) : "🏴‍☠️", " ", player.firstName, " ", player.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, "4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, "1"));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, player.User_Ladder.ranking), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, player.User_Ladder.prevRanking || "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, player.country ? (0,_utils_countriesUtils__WEBPACK_IMPORTED_MODULE_1__.getFlagEmoji)(player.country) : "🏴‍☠️", " ", player.firstName, " ", player.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, player.wonMatches.length), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, player.lostMatches.length));
   })))));
 };
 

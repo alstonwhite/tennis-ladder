@@ -29,12 +29,12 @@ const seed = async () => {
   const ladder1 = await Ladder.create({ name: "Ladder1" });
   const ladder2 = await Ladder.create({ name: "Ladder2" });
   // Assign users to ladders
-  await ladder1.addUser(userAlston);
-  await ladder1.addUser(userNick);
-  await ladder1.addUser(userJackson);
-  await ladder1.addUser(userTrey);
-  await ladder2.addUser(userAlston);
-  await ladder2.addUser(userSoupy);
+  await ladder1.addUser(userAlston, { through: { ranking: 4 }});
+  await ladder1.addUser(userNick, { through: { ranking: 1 }});
+  await ladder1.addUser(userJackson, { through: { ranking: 3 }});
+  await ladder1.addUser(userTrey, { through: { ranking: 2 }});
+  await ladder2.addUser(userAlston, { through: { ranking: 2 }});
+  await ladder2.addUser(userSoupy, { through: { ranking: 1 }});
   // Create matches
   const matchAlstonNick = await Match.create({
     completed: true,
