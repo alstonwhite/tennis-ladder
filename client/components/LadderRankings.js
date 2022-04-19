@@ -18,9 +18,9 @@ const TableHeading = styled.th`
 `;
 
 const TableRow = styled.tr`
-&:first-child > * {
-  border-top: none;
-}
+  &:first-child > * {
+    border-top: none;
+  }
 `;
 
 const TableCell = styled.td`
@@ -43,7 +43,7 @@ const LadderRankings = () => {
       .then((data) => setPlayerData(data));
   }, []);
 
-  console.log("playerData", playerData);
+  console.log("ladderPlayerData", playerData);
 
   return (
     <div>
@@ -70,7 +70,7 @@ const LadderRankings = () => {
                     <TableRow key={player.id}>
                       <TableCell>{player.User_Ladder.ranking}</TableCell>
                       <TableCell>
-                        {player.User_Ladder.prevRanking || "-"}
+                        {player.User_Ladder.prevRanking ? player.User_Ladder.prevRanking - player.User_Ladder.ranking : "-"}
                       </TableCell>
                       <TableCell>
                         {player.country ? getFlagEmoji(player.country) : "🏴‍☠️"}{" "}

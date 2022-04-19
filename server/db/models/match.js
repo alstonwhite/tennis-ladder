@@ -9,6 +9,12 @@ const Match = db.define("match", {
   date: {
     type: Sequelize.DATE,
   },
+  winnerRanking: {
+    type: Sequelize.DATE,
+  },
+  loserRanking: {
+    type: Sequelize.DATE,
+  },
   setsPlayed: {
     type: Sequelize.INTEGER,
   },

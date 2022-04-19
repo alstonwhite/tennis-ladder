@@ -26,9 +26,6 @@ const User = db.define("user", {
   heightIns: {
     type: Sequelize.INTEGER,
   },
-  weightLbs: {
-    type: Sequelize.INTEGER,
-  },
   handedness: {
     type: Sequelize.ENUM("left", "right"),
   },
