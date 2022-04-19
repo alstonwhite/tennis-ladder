@@ -17,7 +17,12 @@ const TableHeading = styled.th`
   font-size: 12px;
 `;
 
-// TODO: Fix eliminating border-top on 1st child
+const TableRow = styled.tr`
+&:first-child > * {
+  border-top: none;
+}
+`;
+
 const TableCell = styled.td`
   border-top: 1px solid #cdcdcd;
   padding: 8px 12px 5px 5px;
@@ -62,7 +67,7 @@ const LadderRankings = () => {
                 )
                 .map((player) => {
                   return (
-                    <tr key={player.id}>
+                    <TableRow key={player.id}>
                       <TableCell>{player.User_Ladder.ranking}</TableCell>
                       <TableCell>
                         {player.User_Ladder.prevRanking || "-"}
@@ -73,7 +78,7 @@ const LadderRankings = () => {
                       </TableCell>
                       <TableCell>{player.wonMatches.length}</TableCell>
                       <TableCell>{player.lostMatches.length}</TableCell>
-                    </tr>
+                    </TableRow>
                   );
                 })}
           </tbody>

@@ -900,11 +900,14 @@ var Table = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].table.with
 var TableHeading = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].th.withConfig({
   displayName: "LadderRankings__TableHeading",
   componentId: "sc-7xf6fw-2"
-})(["border-bottom:2px solid #222;padding:8px 12px 5px 5px;font-size:12px;"]); // TODO: Fix eliminating border-top on 1st child
-
+})(["border-bottom:2px solid #222;padding:8px 12px 5px 5px;font-size:12px;"]);
+var TableRow = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].tr.withConfig({
+  displayName: "LadderRankings__TableRow",
+  componentId: "sc-7xf6fw-3"
+})(["&:first-child > *{border-top:none;}"]);
 var TableCell = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].td.withConfig({
   displayName: "LadderRankings__TableCell",
-  componentId: "sc-7xf6fw-3"
+  componentId: "sc-7xf6fw-4"
 })(["border-top:1px solid #cdcdcd;padding:8px 12px 5px 5px;font-size:16px;> *{&:first-child{border-top:none;}}"]);
 
 var LadderRankings = function LadderRankings() {
@@ -926,7 +929,7 @@ var LadderRankings = function LadderRankings() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Title, null, "Ladder Rankings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Table, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "Rank"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "+/-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "W"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableHeading, null, "L"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tbody", null, playerData && playerData.sort(function (p1, p2) {
     return p1.User_Ladder.ranking - p2.User_Ladder.ranking;
   }).map(function (player) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("tr", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableRow, {
       key: player.id
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, player.User_Ladder.ranking), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, player.User_Ladder.prevRanking || "-"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, player.country ? (0,_utils_countriesUtils__WEBPACK_IMPORTED_MODULE_1__.getFlagEmoji)(player.country) : "🏴‍☠️", " ", player.firstName, " ", player.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, player.wonMatches.length), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(TableCell, null, player.lostMatches.length));
   })))));
